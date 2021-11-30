@@ -48,7 +48,8 @@ def interact(args):
     task = DialogGeneration(args)
     model = models.create_model(args, place)
 
-    task.debug()
+#     uncomment to see the predictions
+#     task.debug()
 
     Example = namedtuple("Example", ["src", "data_id"])
     context = []
