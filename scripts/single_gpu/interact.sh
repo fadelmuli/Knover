@@ -20,13 +20,13 @@ if [[ ${nsp_init_params:-} != "" ]]; then
             --model NSPModel \
             --task NextSentencePrediction \
             --vocab_path ${vocab_path} \
-            --init_pretraining_params "${nsp_init_params}" \
+            --init_pretraining_params ${nsp_init_params} \
             --spm_model_file ${spm_model_file} \
-            --inference_model_path "${nsp_init_params}" \
+            --inference_model_path ${nsp_init_params} \
             ${save_args:-} \
             --config_path ${config_path}
     fi
-    infer_args="--nsp_inference_model_path "${nsp_init_params}" ${infer_args:-}"
+    infer_args="--nsp_inference_model_path ${nsp_init_params} ${infer_args:-}"
 fi
 
 python -m \
@@ -34,7 +34,7 @@ python -m \
     --model ${model:-"Plato"} \
     --vocab_path ${vocab_path} \
     --spm_model_file ${spm_model_file} \
-    --init_pretraining_params "${init_params:-""}" \
+    --init_pretraining_params ${init_params:-""} \
     --config_path ${config_path} \
     ${infer_args:-}
 exit_code=$?
